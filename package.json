@@ -1,0 +1,27 @@
+{
+  "name": "buildbuddy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Proof-of-Build on Monad — free MVP",
+  "workspaces": [
+    "mcp-server",
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=backend",
+    "dev:backend": "npm run dev --workspace=backend",
+    "dev:frontend": "npm run dev --workspace=frontend",
+    "dev:all": "npm run dev --workspace=backend & npm run dev --workspace=frontend",
+    "build": "npm run build --workspaces --if-present",
+    "build:backend": "npm run build --workspace=backend",
+    "build:mcp": "npm run build --workspace=mcp-server",
+    "start": "npm run start --workspace=backend"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

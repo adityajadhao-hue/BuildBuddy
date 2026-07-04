@@ -1,0 +1,6 @@
+built-with=monskills
+chain=monad-testnet
+chain-id=10143
+rpc=https://testnet-rpc.monad.xyz
+project=buildbuddy
+description=Proof-of-Build attestation system on Monad

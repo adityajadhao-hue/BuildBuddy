@@ -1,0 +1,12 @@
+# Fly.io app configuration for the sandbox base image.
+# This app hosts ephemeral Machines (not long-running services).
+# Machines are created via the REST API with auto_destroy: true.
+
+app = "buildbuddy-sandbox"
+primary_region = "iad"
+
+[build]
+  dockerfile = "Dockerfile"
+
+# No services — this app doesn't serve HTTP.
+# Machines are created programmatically and auto-destroy after job completion.
