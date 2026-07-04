@@ -1,0 +1,16 @@
+
+json
+
+{
+  "mcpServers": {
+    "buildbuddy": {
+      "command": "node",
+      "args": ["mcp-server/dist/index.js"],
+      "env": {
+        "BUILDBUDDY_API_URL": "http://localhost:3001",
+        "BUILDBUDDY_API_KEY": "my-dev-key"
+      },
+      "disabled": false
+    }
+  }
+}

@@ -7,6 +7,10 @@ import "../src/BuildAttestationRegistry.sol";
 contract BuildAttestationRegistryTest is Test {
     BuildAttestationRegistry public registry;
 
+    event IdentityLinked(address indexed dev, string githubHandle);
+    event BuildSubmitted(address indexed dev, bytes32 indexed repoHash, uint256 index, uint8 status, bytes32 attestationHash);
+    event ScoreUpdated(address indexed dev, uint256 newScore, uint32 repoStreak);
+
     address oracle = address(0x1);
     address dev1 = address(0x2);
     address dev2 = address(0x3);
@@ -300,7 +304,7 @@ contract BuildAttestationRegistryTest is Test {
     function test_linkGithub_emitsEvent() public {
         vm.prank(oracle);
         vm.expectEmit(true, false, false, true);
-        emit BuildAttestationRegistry.IdentityLinked(dev1, "octocat");
+        emit IdentityLinked(dev1, "octocat");
         registry.linkGithub(dev1, "octocat");
     }
 
@@ -359,7 +363,7 @@ contract BuildAttestationRegistryTest is Test {
 
         vm.prank(oracle);
         vm.expectEmit(true, true, false, true);
-        emit BuildAttestationRegistry.BuildSubmitted(
+        emit BuildSubmitted(
             dev1,
             repoHash1,
             0, // first build index
@@ -376,7 +380,7 @@ contract BuildAttestationRegistryTest is Test {
 
         vm.prank(oracle);
         vm.expectEmit(true, false, false, true);
-        emit BuildAttestationRegistry.ScoreUpdated(dev1, 110, 1);
+        emit ScoreUpdated(dev1, 110, 1);
         registry.submitBuild(dev1, rec, false);
     }
 

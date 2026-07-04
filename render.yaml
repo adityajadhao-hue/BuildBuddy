@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: buildbuddy-backend
+    runtime: node
+    region: oregon
+    plan: free
+    rootDir: backend
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "3001"
+      - key: ORACLE_PRIVATE_KEY
+        sync: false
+      - key: MONAD_RPC_URL
+        value: https://testnet-rpc.monad.xyz
+      - key: REGISTRY_CONTRACT_ADDRESS
+        value: "0xeB7D7411e5B98F0E347eD03883cab8845bd3ef53"
+      - key: BOUNTYGATE_CONTRACT_ADDRESS
+        value: "0xAB2E1A5d4944Df1Ec5E15B6125C124d305489Cd0"
+      - key: API_KEYS
+        sync: false

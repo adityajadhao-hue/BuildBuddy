@@ -9,6 +9,8 @@ contract BountyGateTest is Test {
     BuildAttestationRegistry public registry;
     BountyGate public gate;
 
+    event BountyClaimed(address indexed dev, uint256 indexed bountyId, uint256 reward);
+
     address oracle = address(0x1);
     address dev1 = address(0x2);
     address dev2 = address(0x3);
@@ -129,7 +131,7 @@ contract BountyGateTest is Test {
 
         vm.prank(dev1);
         vm.expectEmit(true, true, false, true);
-        emit BountyGate.BountyClaimed(dev1, bountyId, 0.1 ether);
+        emit BountyClaimed(dev1, bountyId, 0.1 ether);
         gate.claimBounty(bountyId);
     }
 
